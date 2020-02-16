@@ -28,14 +28,25 @@ namespace My_Scripture_Journal
         public SelectList Books { get; set; }
         [BindProperty(SupportsGet = true)]
         public string ScriptureBook { get; set; }
+        public string SortOption { get; set; }
 
         public async Task OnGetAsync()
         {
             IQueryable<string> bookQuery = from m in _context.ScriptureModel
                                            orderby m.Book
                                            select m.Book;
+            IQueryable<int> allList = from d in _context.ScriptureModel
+                                           orderby d.ID
+                                           select d.ID;
             var scriptures = from m in _context.ScriptureModel
                              select m;
+            if (!string.IsNullOrEmpty(SortOption))
+            {
+                if (SortOption == "Descending")
+                {
+                    
+                }
+            }
             if (!string.IsNullOrEmpty(ScriptureBook))
             {
                 scriptures = scriptures.Where(s => s.Book == ScriptureBook);
@@ -44,6 +55,7 @@ namespace My_Scripture_Journal
             {
                 scriptures = scriptures.Where(x => x.Notes.Contains(SearchString));
             }
+            
 
             Books = new SelectList(await bookQuery.Distinct().ToListAsync());
 
