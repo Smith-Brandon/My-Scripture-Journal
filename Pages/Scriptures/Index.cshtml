@@ -13,31 +13,25 @@
 
 <form>
     <p>
-        Search by Book
+        Search by Book:
         <select asp-for="ScriptureBook" asp-items="Model.Books">
             <option value="">All</option>
         </select>
-
-        <input type="submit" value="Filter" />
-    </p>
-</form>
-
-<form>
-    <select asp-for="SortOption">
-        <option value="">Ascending</option>
-        <option value="des">descending</option>
-    </select>
-    <!--<input type="text" asp-for="SortOption" />-->
-    <input type="submit" value="Filter" />
-</form>
-
-<form>
-    <p>
+        <br><br>
+        Sort by Date:
+        <select asp-for="SortOption">
+            <option value="">Ascending</option>
+            <option value="des">Descending</option>
+        </select>
+        <br><br>
+    
         Search by Note:
-        <input type="text" asp-for="SearchString" />
+        <input type="text" asp-for="SearchString" size="10" />
         <input type="submit" value="Filter" />
     </p>
+    
 </form>
+
 <form>
     <input type="submit" value="Reset" />
 </form>
