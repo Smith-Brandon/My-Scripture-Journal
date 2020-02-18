@@ -27,7 +27,11 @@ namespace My_Scripture_Journal
         // Requires using Microsoft.AspNetCore.Mvc.Rendering;
         public SelectList Books { get; set; }
         [BindProperty(SupportsGet = true)]
+
+        
         public string ScriptureBook { get; set; }
+
+        [BindProperty(SupportsGet = true)]
         public string SortOption { get; set; }
 
         public async Task OnGetAsync()
@@ -35,18 +39,12 @@ namespace My_Scripture_Journal
             IQueryable<string> bookQuery = from m in _context.ScriptureModel
                                            orderby m.Book
                                            select m.Book;
-            IQueryable<int> allList = from d in _context.ScriptureModel
-                                           orderby d.ID
-                                           select d.ID;
+           
+            IQueryable<ScriptureModel> entries = from e in _context.ScriptureModel
+                                        select e;
             var scriptures = from m in _context.ScriptureModel
                              select m;
-            if (!string.IsNullOrEmpty(SortOption))
-            {
-                if (SortOption == "Descending")
-                {
-                    
-                }
-            }
+            
             if (!string.IsNullOrEmpty(ScriptureBook))
             {
                 scriptures = scriptures.Where(s => s.Book == ScriptureBook);
@@ -55,8 +53,11 @@ namespace My_Scripture_Journal
             {
                 scriptures = scriptures.Where(x => x.Notes.Contains(SearchString));
             }
+            if (!string.IsNullOrEmpty(SortOption))
+            {
+                scriptures = scriptures.OrderByDescending(s => s.ID);  
+            }
             
-
             Books = new SelectList(await bookQuery.Distinct().ToListAsync());
 
             ScriptureModel = await scriptures.ToListAsync();

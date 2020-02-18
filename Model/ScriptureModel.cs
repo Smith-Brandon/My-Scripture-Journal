@@ -17,5 +17,7 @@ namespace My_Scripture_Journal.Model
         [Display(Name = "Date Added")]
         [DataType(DataType.Date)]
         public String dateAdded = DateTime.Now.ToString("MM/dd/yyyy");
+
+
     }
 }

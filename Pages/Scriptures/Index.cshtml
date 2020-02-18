@@ -17,9 +17,20 @@
         <select asp-for="ScriptureBook" asp-items="Model.Books">
             <option value="">All</option>
         </select>
+
         <input type="submit" value="Filter" />
     </p>
 </form>
+
+<form>
+    <select asp-for="SortOption">
+        <option value="">Acsend</option>
+        <option value="des">Des</option>
+    </select>
+    <!--<input type="text" asp-for="SortOption" />-->
+    <input type="submit" value="Filter" />
+</form>
+
 <form>
     <p>
         Search by Note:
@@ -29,13 +40,6 @@
 </form>
 <form>
     <input type="submit" value="Reset" />
-</form>
-<form>
-    <select asp-for="SortOption">
-        <option value="Ascending">Ascending</option>
-        <option value="Descending">Descending</option>
-    </select>
-    <input type="submit" value="Sort" />
 </form>
 
 <table class="table">
