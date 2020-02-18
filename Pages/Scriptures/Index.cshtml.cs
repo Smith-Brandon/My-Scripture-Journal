@@ -56,7 +56,11 @@ namespace My_Scripture_Journal
             }
             if (SortOption == "des")
             {
-                scriptures = scriptures.OrderByDescending(s => s.ID);  
+                scriptures = scriptures.OrderByDescending(s => s.dateAdded);  
+            }
+            if (SortOption == "asc")
+            {
+                scriptures = scriptures.OrderBy(s => s.dateAdded);
             }
             if (SortOption == "book")
             {

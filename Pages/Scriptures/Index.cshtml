@@ -20,7 +20,8 @@
         <br><br>
         Sort by Date:
             <select asp-for="SortOption">
-                <option value="">Ascending</option>
+                <option value="" selected></option>
+                <option value="asc">Ascending</option>
                 <option value="des">Descending</option>
                 <option value="book">Book</option>
             </select>
@@ -50,31 +51,37 @@
             <th>
                 @Html.DisplayNameFor(model => model.ScriptureModel[0].Notes)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScriptureModel[0].dateAdded)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.ScriptureModel)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Book)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Chapter)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Verse)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Notes)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chapter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateAdded)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

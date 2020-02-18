@@ -14,10 +14,7 @@ namespace My_Scripture_Journal.Model
         public int Verse { get; set; }
         public string Notes { get; set; }
 
-        [Display(Name = "Date Added")]
         [DataType(DataType.Date)]
-        public String dateAdded = DateTime.Now.ToString("MM/dd/yyyy");
-
-
+        public DateTime dateAdded { get; set; }
     }
 }
