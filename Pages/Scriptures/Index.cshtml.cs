@@ -27,12 +27,13 @@ namespace My_Scripture_Journal
         // Requires using Microsoft.AspNetCore.Mvc.Rendering;
         public SelectList Books { get; set; }
         [BindProperty(SupportsGet = true)]
-
-        
         public string ScriptureBook { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string SortOption { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string SortBook { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -53,11 +54,15 @@ namespace My_Scripture_Journal
             {
                 scriptures = scriptures.Where(x => x.Notes.Contains(SearchString));
             }
-            if (!string.IsNullOrEmpty(SortOption))
+            if (SortOption == "des")
             {
                 scriptures = scriptures.OrderByDescending(s => s.ID);  
             }
-            
+            if (SortOption == "book")
+            {
+                scriptures = scriptures.OrderBy(s => s.Book);
+            }
+
             Books = new SelectList(await bookQuery.Distinct().ToListAsync());
 
             ScriptureModel = await scriptures.ToListAsync();
