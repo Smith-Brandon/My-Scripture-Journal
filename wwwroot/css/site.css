@@ -59,8 +59,12 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url(../images/christ.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 .footer {
   position: absolute;
@@ -68,4 +72,21 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  text-align: center;
+}
+/******/
+.mainDiv {
+    background-color: #ffffff;
+    max-width: 90%;
+    min-width: 80%;
+    min-height: 80%;
+    max-height: 90%;
+    margin: auto;
+    display: inline-block;
+    flex-wrap: nowrap;
+    padding: 10px;
+}
+.topOptionSection {
+    text-align: center;
+
 }

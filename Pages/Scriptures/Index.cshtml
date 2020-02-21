@@ -4,8 +4,8 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
+<div class="topOptionSection">
+<h1>My Scriptures</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -21,8 +21,8 @@
         Sort by Date:
             <select asp-for="SortOption">
                 <option value="" selected></option>
-                <option value="asc">Ascending</option>
-                <option value="des">Descending</option>
+                <option value="asc">Oldest</option>
+                <option value="des">Newest</option>
                 <option value="book">Book</option>
             </select>
         <br><br>
@@ -35,7 +35,8 @@
 <form>
     <input type="submit" value="Reset" />
 </form>
-
+</div>
+<br>
 <table class="table">
     <thead>
         <tr>
@@ -52,7 +53,7 @@
                 @Html.DisplayNameFor(model => model.ScriptureModel[0].Notes)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ScriptureModel[0].dateAdded)
+                Date
             </th>
             <th></th>
         </tr>
